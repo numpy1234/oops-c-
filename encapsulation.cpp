@@ -3,19 +3,21 @@
 using namespace std;
 
 class YouTubeChannel{
-public:
+private:
 	string Name;
 	string ownername;
 	int subscribercount;
 	list<string> publishedvideotitles;
 
+
+public:
 	///constructor
 
-	YouTubeChannel(string name, string owner, int count ,list<string> publishedvideos){
+	YouTubeChannel(string name, string owner){
 		Name=name;
 		ownername=owner;
-		subscribercount=count;
-		publishedvideotitles=publishedvideos;
+		subscribercount=0;
+		
 	}
 
 	///class method
@@ -30,18 +32,42 @@ public:
 
 	}
 
+
+
+	///methods
+
+	void subscribe(){
+		subscribercount++;
+	}
+	void unsubscribe(){
+		if(subscribercount>0){
+			subscribercount--;
+		}
+	}
+
+
+	void publishvideo(string videotitle){
+		publishedvideotitles.push_back(videotitle);
+	}
+
 };
 
 int main(){
 
-	YouTubeChannel ytchannel("Codebeauty", "dikshant", 1100, {"for html", "for css"});
+	YouTubeChannel ytchannel("Codebeauty", "dikshant");
 
-	YouTubeChannel ytchannel2("Amydrinks", "amy", 25, {"intro"});
+	YouTubeChannel ytchannel2("Amydrinks", "amy");
 
+	ytchannel.subscribe();
+	ytchannel.subscribe();
+	ytchannel.subscribe();
+
+	ytchannel.publishvideo("C++ for beginners");
+	ytchannel.publishvideo("C++ OOPs concepts");
 
 	///ytchannel.get();
 	ytchannel.get();
-	ytchannel2.get();
+	
 
 
 
@@ -55,4 +81,7 @@ int main(){
 /*encapsulation says that the properties shouldnt be 
 public but pvt and the way you change the data stored 
 inside the properties 
-should be using methods that you expose
+should be using methods that you expose and give 
+access to the user to change the data stored inside the properties
+so that you can control how the data is changed
+*/
