@@ -19,7 +19,7 @@ public:
         title = t;
         author = a;
         ratescounter=2;
-        rates= new int[ratescounter]
+        rates= new int[ratescounter];
         rates[0]=4;
         rates[1]=5;
         cout<<"constructor involved: "<< title<<endl;
